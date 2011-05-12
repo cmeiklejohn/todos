@@ -13,13 +13,18 @@ Todos.Todo = SC.Object.extend({
 
 Todos.CreateTodoView = SC.TextField.extend({ 
   insertNewline: function() { 
-    var vlaue = this.get('value');
+    var value = this.get('value');
 
     if (value) { 
       Todos.todoListController.createTodo(value);
       this.set('value', '');
     }
   }
+});
+
+Todos.MarkDoneView = SC.Checkbox.extend({ 
+  titleBinding: '.parentView.content.title', 
+  valueBinding: '.parentView.content.isDone'
 });
 
 SC.ready(function() {
